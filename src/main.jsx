@@ -5,10 +5,28 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Root from './Pages/Root';
+import Home from './Pages/Home';
+import LogIn from './Pages/LogIn';
+import SignUp from './Pages/SignUp';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <Root></Root>,
+    children:[
+      {
+        path:"/",
+        element:<Home></Home>
+      },
+      {
+        path:"/login",
+        element:<LogIn></LogIn>
+      },
+      {
+        path:"/signup",
+        element:<SignUp></SignUp>
+      },
+    ]
   },
 ]);
 
