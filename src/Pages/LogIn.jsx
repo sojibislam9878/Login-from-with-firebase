@@ -1,5 +1,7 @@
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import auth from "../firebaseConfig";
 
 const LogIn = () => {
   const [isHide, setIsHide] = useState(false);
@@ -13,6 +15,13 @@ const LogIn = () => {
     const email = e.target.email.value;
     const password= e.target.password.value
     console.log(password,email);
+    createUserWithEmailAndPassword(auth,email,password)
+    .then(result =>{
+        console.log(result.user);
+    })
+    .catch(error=>{
+        console.log(error);
+    })
   };
   return (
     <div className="bg-slate-50">
